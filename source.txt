@@ -1,0 +1,324 @@
+"Cabin Escape" by Matvei Keshkekian
+
+Release along with an interpreter, a website, cover art ("CabinEscape") and the source text.
+
+Chapter 1 - Rules of the physical world
+
+When play begins:
+	say "You are all dressed and ready to go skiing, but you're locked in a cabin. Find an escape."
+
+[living room]
+The Living Room is a room. The Living room is southwest of the bathroom. "The cabin is small and cluttered.
+
+A window on the south wall, a desk, a painting on the wall, and a clock. 
+
+East of the living room you see the kitchen."
+
+The main door is a closed door in the Living Room. The main door is west of the Living Room. The main door is fixed in place. "The heavy wooden door is locked."
+
+The main door is locked.
+
+Instead of opening the main door:
+	if the main door is locked:
+		if the player carries the key:
+			say "The door unlocks with a satisfying click, and you open it.";
+			now the main door is unlocked;
+			end the story finally saying "You step outside into the snowy forest, ready to ski.";
+		otherwise:
+			say "The door is locked. You'll need the key to open it.";
+	otherwise:
+		say "The door is already open, and you step outside into the snowy forest.";
+		end the story finally saying "You step outside into the snowy forest, ready to ski."
+
+The window is an openable door. The window is south of the Living Room. The window is closed. The description of the window is "The window is frosted and stuck shut, but seems like with a little effort you can get it to open. Beyond it are the slopes that you have been dreaming of skiing on."
+
+
+Instead of opening the window:
+	if the window is closed:
+		if the player carries the screwdriver:
+			say "You use the screwdriver to unstick the frosted window, and it creaks open.";
+			now the window is open;
+			end the story finally saying "You climb out of the window into the snowy forest, free at last to ski.";
+		otherwise:
+			say "The window is stuck shut. Maybe you can find something to help you open it?";
+	otherwise:
+		say "The window is already open, and you climb through it.";
+		end the story finally saying "You climb out of the window into the snowy forest, free at last to ski."
+
+The desk is a supporter in the Living Room. "The desk doesn't seem to be too intersting. One drawer is slightly open."
+
+The drawer is a closed openable container part of the desk. "An old, wobbly drawer. It seems to contain a note." 
+
+In the drawer is a note. The description of the note is "After squinting your eyes at it for a minute trying to understand the bad handwriting, you read the note 'Key is on the bottom of something...'"
+
+The painting is a scenery supporter in the Living Room. The painting can be moved or unmoved. The painting is unmoved. The description of the painting is "A snowy forest painting with a loose frame. Looks like something might be behind it." 
+
+Instead of pushing the painting:
+	if the painting is unmoved:
+		say "You move the painting and reveal a safe hidden behind it.";
+		now the painting is moved;
+		now safe is in the Living room;
+	otherwise:
+		say "You've already moved the painting, and the safe is visible."
+
+The safe is a closed openable container. The safe is nowhere. The safe can be opened.
+
+Instead of opening the safe:
+	if the clock is not examined:
+		say "You try to remember the combination, but you can't recall it.";
+		stop the action;
+	if the safe is closed:
+		now the safe is open;
+		say "You enter 4-2-7, and the safe clicks open revealing a screwdriver.";
+		move the screwdriver to the safe;
+	otherwise:
+		say "The safe is already open."
+		
+
+Checking the time is an action applying to one thing.
+
+The clock is scenery in the Living Room. "A basic clock, off by four hours."
+
+The clock can be examined. The clock is not examined.
+
+
+Instead of examining the clock:
+	say "You look at the time and realize that it is four hours off. 
+	
+	Suddenly the clock falls, revealing the back side of it. 
+	
+	With a closer look you see numbers are scratched on the back: 4-2-7.";
+	now the clock is examined.
+	
+The screwdriver is a thing. The description of the screwdriver is "It looks sturdy enough to unstick something frozen or stuck."
+
+[closet]
+
+The closet is north of the Living Room. "A dusty closet filled with tools and supplies."
+
+The shelf is scenery in the closet. "The shelf is full of things you don’t need."
+
+
+[kitchen]
+The kitchen is east of the Living Room. "The kitchen is small but cozy. A lot of snacks in the room, but good thing you are not hungry.
+
+North of the kithchen you see the bathroom."
+
+[bathroom]
+
+
+The Bathroom is a room northeast of the Living Room. The Bathroom is north of the Kitchen. The Bathroom is east of the Closet. The description of the Bathroom is "Old bathroom. You look at yourself and realize you want to enter the bath."
+
+The bath is an enterable supporter in the Bathroom. The description of the bath is "A warm and cozy bath looks at you. You remind yourself how much you love taking baths. Suddenly, at the bottom of the bath, you notice something shiny... after a closer look, you realize it is a key."
+
+A bottom is an openable container. The bottom is part of the bath. The description of the bottom is "The base of the bath. You notice something shiny glinting faintly here."
+
+The rusty old key is in the bottom. The description of the key is "A rusty old key, glinting faintly at the bottom of the bath."
+
+The hanger is an openable container in the Bathroom. The description of the hanger is "A hanger with a hairdryer on it, hanging over the bath."
+
+The hairdryer is a thing in the hanger. The description of the hairdryer is "A precariously balanced hairdryer. It seems like it could fall into the bath if you're not careful."
+
+Instead of entering the bath:
+	if the hairdryer is in the hanger:
+		end the story saying "You get in the bath and immediately get shocked and die from the hairdryer that fell into the bath without you noticing.";
+	otherwise:
+		say "You carefully get in the bath and suddenly notice something at the bottom of it... it's a key."
+
+Instead of taking the rusty old key:
+	if the hairdryer is in the hanger:
+		end the story saying "As you reach for the key, the hairdryer falls into the bath, electrocuting you instantly. You should have been more careful.";
+	otherwise:
+		now the player carries the rusty old key;
+		say "You carefully retrieve the key from the bottom of the bath and get out of the bath."
+
+Instead of taking the hairdryer:
+	say "You carefully move the hairdryer away from the bath, ensuring it won't fall in.";
+	now the hairdryer is nowhere.
+
+
+
+Chapter 2 - Grandmother 
+
+The grandmother is a person in the kitchen. The grandmother can be greeted or ungreeted. Understand "grandma" or "gm" as the grandmother. The grandmother is ungreeted. The description of the grandma is "Old lovely lady."
+
+
+After greeting the grandmother:
+	if the grandmother is ungreeted:
+		say "'Hey there kiddo,' she says with a smile. 'Cooking up something sweet, should be ready by the time you get back from skiing. You look confused, have you got a question?";
+		now the grandmother is greeted;
+	otherwise:
+		say "'Ah, you're back again,' he says warmly."
+		
+
+Instead of asking the grandmother about something when the grandmother is ungreeted:
+	say "Greet your elders you uneducated devil.";
+
+
+
+Table of Grandmother's Knowledge
+Topic	Question Type	Reply
+"knitting"	what	"'Knitting,' the grandmother smiles warmly, her fingers miming the motion of needles. 'It’s both an art and a comfort. I’ve made blankets, scarves, and even a few secrets hidden in stitches.'"
+"tea"	what	"'Ah, tea,' she says, pouring an imaginary cup. 'A moment of peace in a hectic world. It’s not just a drink—it’s a pause, a tradition, and sometimes, a solution to any problem.'"
+"key"	where	"'The key?' she chuckles softly. 'It’s in a wet place, but where’s the fun in just telling you? Perhaps it’s closer than you think.'"
+"garden"	where	"'The garden?' she sighs contentedly. 'A little slice of heaven. You’ll find it just outside, through the kitchen door. Mind the roses—they have their secrets.'"
+"chair"	what	"'This chair,' she says, patting the cushion, 'has cradled my dreams for years. It’s worn but full of memories.'"
+"painting"	what	"'The painting?' she nods toward it. 'It was a gift from an old friend. There’s more to it than meets the eye—perhaps a clue if you look closely.'"
+"clock"	what	"'The clock,' she chuckles, 'has a mind of its own. It might not be right, but sometimes it’s the wrong times that matter most.'"
+"tools"	why	"'Tools?' she muses. 'They’re meant to build or fix, but often, they reveal more about the person using them.'"
+"safe"	where	"'The safe?' she says with a knowing look. 'It’s tucked away where only the curious might find it. Look behind something with history.'"
+"tea leaves"	how	"'Reading tea leaves?' she smiles mysteriously. 'It’s an art of patterns and possibilities. Pour the tea, drink, and let the leaves tell their story.'"
+"family"	why	"'Family,' she says, her voice softening. 'They’re the threads that weave us together. Even when apart, their presence lingers in our hearts.'"
+"window"	how	"'The window?' she says thoughtfully. 'A way out, if the door doesn’t suit you. Just be careful not to let the breeze carry away your plans.'"
+"door"	how	"'The door?' she nods. 'A more traditional exit. It needs a key, though. Have you checked all the usual hiding spots?'"
+"exit/leave/escape"	how	"'Leaving?' she smiles gently. 'Whether through the door or the window, each path has its charm. The choice is yours.'"
+
+
+After asking Grandmother about something: respond to the query.
+
+To respond to the query:
+	repeat through the Table of Grandmother's Knowledge:
+		if the topic understood includes topic entry:
+			if the current question is the question type entry:
+				say "[reply entry][paragraph break]";
+				rule succeeds;
+	say "Grandma rolls her eyes and 'Oof, that sounds like a question for your grandfather'";
+
+
+
+Chapter 3 - Grandpa
+
+
+The grandfather is a person in the Living Room. The grandfather can be greeted or ungreeted.  Understand "grandpa" or "pops" or "gp" as the grandfather. The grandfather is ungreeted. The description of the grandfather is "An old man with kind eyes, sitting in the rocking chair. He looks like he knows a lot about skiing and snowboarding but seems reluctant to share his knowledge."
+
+
+Instead of examining the grandfather:
+	say "He looks at you with a mix of curiosity and warmth, but you sense he might be hiding something."
+
+After greeting the grandfather:
+	if the grandfather is ungreeted:
+		say "'Hello there,' he says with a smile. 'It’s been a while since I had company. But I understand you are trying to leave to go ski right? Well enjoy the nice weather. Let me know if you have any questions.'";
+		now the grandfather is greeted;
+	otherwise:
+		say "'Ah, you're back again,' he says warmly."
+		
+
+Instead of asking the grandfather about something when the grandfather is ungreeted:
+	say "Greet your elders you uneducated devil.";
+		
+Table of Grandfather's Knowledge
+Topic	Question Type	Reply
+"skiing"	what	"'Ah, skiing,' the grandfather begins, leaning back in his chair. 'It’s the dance of balance and speed on a snowy stage. I could talk about it for hours, but let’s not lose sight of your current puzzle.'"
+"snowboarding"	what	"'Snowboarding?' he chuckles. 'A fine art, though not for the faint of heart. Ever tried gliding down a slope like a leaf in the wind?'"
+"key"	where	"I dropped the key somewhere wet, can't remember. Try leaving through the window, thats a fun way out"
+"escape"	why	"'Escape?' the grandfather muses, a twinkle in his eye. 'Why rush? The cabin has a charm of its own. Still, I understand the call of the outside.'"
+"forest"	where	"'The forest?' he smiles wistfully. 'A beautiful, serene place. In my younger days, I would ski through its quiet paths. It’s just south of here, beyond the window or the door.'"
+"chair"	what	"'This chair,' the grandfather says, patting the armrest, 'has been my companion for years. It creaks and groans but holds countless stories.'"
+"painting"	what	"'The painting?' he nods toward it. 'A gift from an old friend. It hides more than it shows, wouldn’t you agree?'"
+"clock"	what	"'The clock,' he says with a chuckle, 'is off by four hours, but it’s not like time runs differently in this cozy cabin.'"
+"tools"	why	"'Tools?' he says thoughtfully. 'Useful things, but only as good as the hands that wield them. Do you have a purpose for them?'"
+"safe"	where	"'The safe? Hidden behind something,' he says knowingly. 'Perhaps check behind objects with history or importance. Also, the screwdriver might be inside.'"
+"ski resort"	where	"'There’s a resort not far from here,' he says, his tone tinged with nostalgia. 'It’s been closed for years. A shame, really. The slopes were magnificent.'"
+"family"	why	"'Family,' he says, his voice softening. 'They are everything. I miss mine dearly, but I cherish the memories we shared.'"
+"safe"	what	"'The safe?' he raises an eyebrow. 'Ah, yes, I remember the code was scratched onto the back of something. Perhaps you’ll find it if you look closely.'"
+"safe"	how	"'The safe?' he raises an eyebrow. 'Ah, yes, I remember the code was scratched onto the back of something. Perhaps you’ll find it if you look closely at the time.'"
+"leaving the house/leave the house"	how	"'Leaving the house?' the grandfather repeats. 'Ah, you could unlock the door with the key or try the window with the screwdriver. Both are valid paths, depending on what you’ve found.'"
+"leaving"	how	"'Leaving?' he smiles knowingly. 'You could unlock the door with the key, or try the window with the screwdriver. Either way, freedom awaits.'"
+"exit/leave/escape" 	how	"'The exit?' the grandfather replies. 'It’s up to you—unlock the door with the key or pry open the window with the screwdriver. The choice is yours.'"
+"screwdriver"	where	"Ohh I think I locked that away in the safe so that grandma can't get it. "
+"grandma/grandmother"	where	"Probably in the kitchen cooking something"
+"grandma/grandmother"	who	"My wife... obviously"	
+"man united/united/man u/ manchester united"	who	"Best team in the world son"
+
+
+Chapter 4 - Conversation Rules
+
+[add understand leaving/leaving the house]
+
+A question-counter is a number that varies. The question-counter is 0.
+
+Table of Insults
+response
+"You're as sharp as a marble, aren't you?"
+"Did you fall down the chimney and hit your head?"
+"You’re asking more questions than the taxman!"
+"Your curiosity is impressive…ly annoying."
+"Do I look like a library to you?"
+
+		
+
+Leaving is an action applying to one thing.
+
+Understand "leave [thing]" or "say goodbye to [thing]" or "say farewell to [thing]" or "bye [thing]" or "goodbye[thing]" as leaving.
+
+Understand "go to [direction]" as going. 
+
+Understand "wooden door" as the main door.
+
+[Understand "go to [somewhere]"  as going there.[make this work]]
+
+[Understand commands for named locations]
+Understand "go to [any room]" as going to a room.
+
+[Define an action for navigating to rooms by name]
+Going to a room is an action applying to one thing. 
+
+Carry out going to a room:
+	let the destination be the noun;
+	move the player to the destination;
+	say "You walk to [the destination].";
+
+	
+
+Understand "move [something]" or "unhang [something]" or "take off [something]" or "look behind [something]" as pushing. 
+
+Understand "ask [someone] [text]" as asking it about.
+
+Interrogative is a kind of value. 
+The interrogatives are who, what, when, where, how, and why.
+
+Greeting is an action applying to one thing. 
+Understand "greet [thing]" or "say hello to [thing]" or "say hi to [thing]" or "wave to [thing]" or "hello [thing]" as greeting. 
+
+Dying is an action applying to nothing.
+Understand "die" or "kill" or "end it all" or "end it all" or "collapse" or "kill yourself "as dying.
+
+Instead of dying:
+	end the story saying "You stumble on and crack your head open. Your grandparents look at you with disbelief as your blood spills over the new carpet."
+	
+To end in despair:
+	end the story saying "You bored your grandparents to death... literally. 
+	
+	And you end your life as you cannot see a life without them."
+
+		
+After reading a command:
+	if the player's command includes "[interrogative]":
+		if the question-counter is 10:
+			end in despair;
+		otherwise:
+			increase the question-counter by 1;
+			now the current question is the interrogative understood.
+	
+
+Current question is an interrogative that varies.
+
+After asking someone about something: respond to the question.
+
+[After asking Grandfather about something:
+	increase the question-counter by 1;
+	if the question-counter > 9:
+		let insult-line be any row of the Table of Insults;
+		say "[insult-line entry][paragraph break]";
+		rule succeeds.]
+
+
+To respond to the question:
+	repeat through the Table of Grandfather's Knowledge:
+		if the topic understood includes topic entry:
+			if the current question is the question type entry:
+				say "[reply entry][paragraph break]";
+				rule succeeds;
+	say "I don't know son, try asking your grandmother";
+
+
